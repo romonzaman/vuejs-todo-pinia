@@ -17,7 +17,9 @@ const register = () => {
 
 
 <template>
-    <p class="text-md w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    <p class="text-md w-full m-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt
+        ut
         labore
         et dolore magna
         aliqua. Urna id volutpat lacus laoreet non curabitur gravida arcu ac. Quis risus sed vulputate odio. Proin sed
@@ -29,13 +31,21 @@ const register = () => {
         vitae congue eu consequat ac felis. Vitae aliquet nec ullamcorper sit amet risus. Pulvinar neque laoreet suspendisse
         interdum consectetur libero. Quis hendrerit dolor magna eget est. Sollicitudin aliquam ultrices sagittis orci.</p>
 
-    <div class="flex flex-col justify-start items-start mt-10">
+    <div class="flex flex-col justify-start items-start mt-10 ml-5">
         <button v-if="!authStore.isAuthenticated" class="text-md bg-green-700 text-white p-2 rounded-lg" @click="login()">
             Login
             Here</button>
         <button v-if="!authStore.isAuthenticated" class="text-md bg-blue-700 text-white mt-4 p-2 rounded-lg"
             @click="register()"> Register Now
         </button>
+    </div>
+
+    <div class="m-5 flex flex-col" v-if="authStore.isAuthenticated">
+        <span class="text-2xl">Welcome</span>
+        <span class="text-2xl font-bold">{{ authStore.getUser.name }}</span>
+        <span class="text-md mt-5">
+            {{ authStore.getUser.email }}
+        </span>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useAuthStore = defineStore('auth2', {
+export const useAuthStore = defineStore('auth', {
   state: () => ({
     users: [
     ],
@@ -16,10 +16,23 @@ export const useAuthStore = defineStore('auth2', {
   },
   actions: {
         login(form) {
-            console.log("login ok")
-            this.currentUser = form.email
-            this.isAuthenticated = true
-            this.router.push('/')
+            const filterCB = (user)=> {
+              console.log(user)
+              console.log(form)
+              return user.email==form.email
+            }
+            const matchedUsers = this.users.filter(filterCB)
+            console.log(matchedUsers)
+            if (matchedUsers.length > 0){
+              console.log("true");
+              this.currentUser = matchedUsers[0]
+              this.isAuthenticated = true
+              this.router.push('/')
+            } else {
+              console.log("false");
+              return false
+            }
+            return true
         },
         logout() {
             this.currentUser = ""

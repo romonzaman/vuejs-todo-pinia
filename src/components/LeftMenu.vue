@@ -22,7 +22,7 @@ const login = () => {
     <ul class="text-left m-5">
         <li>
             <router-link class="text-md text-blue-700 hover:pr-2 hover:bg-blue-800 hover:text-white"
-                to="/">Home</router-link>
+                to="/">Dashboard</router-link>
         </li>
         <!-- <li class="mt-5">
             <router-link v-if="!authStore.isAuthenticated"

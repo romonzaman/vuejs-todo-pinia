@@ -11,6 +11,7 @@ const logout = () => {
     router.push("/")
 }
 
+
 </script>
 
 
@@ -19,7 +20,7 @@ const logout = () => {
         <div class="p-5 bg-blue-500 text-white flex justify-between items-center">
             <div>LOGO</div>
             <div>
-                <span>{{ authStore.getUser }}</span>
+                <span>{{ authStore.getUser.name }}</span>
                 <a v-if="authStore.isAuthenticated" href="" @click.prevent="logout()"
                     class="bg-red-900 p-2 cursor-pointer text-white rounded-lg ml-4">
                     logout
