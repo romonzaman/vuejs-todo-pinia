@@ -12,7 +12,7 @@ const router = useRouter()
 // if (authStore.isAuthenticated == true) {
 //     router.push("/")
 // }
-
+const loginOK = ref(false)
 const form = reactive({ email: '', password: '', password2: '', })
 const passMismatch = ref("")
 const rules = {
@@ -38,7 +38,13 @@ const formSubmit = async () => {
         return false
     }
     console.log("formSubmit")
+    // simulate api execution delay
+    loginOK.value = true
     authStore.register(form)
+    setTimeout(() => {
+        loginOK.value = false
+        router.push('/')
+    }, 2000)
 }
 const redirect_login = () => {
     router.push('/login')
@@ -52,6 +58,9 @@ const redirect_login = () => {
         <div class="bg-grey-lighter flex flex-col mt-10">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <div v-if="loginOK" class="pt-5 pb-2 text-green-600 text-xs italic font-bold">Signup successful.
+                        Please Login now..</div>
+
                     <h1 class="mb-8 text-3xl text-center">Sign up</h1>
                     <!-- <input v-model="form.name" type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
                         name="fullname" placeholder="Full Name" />

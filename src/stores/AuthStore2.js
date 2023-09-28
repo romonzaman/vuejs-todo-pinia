@@ -41,7 +41,7 @@ export const useAuthStore = defineStore('auth', {
         register(form) {
             console.log("register ok")
             this.users.push(form)
-            this.router.push('/')
+            // this.router.push('/')
         }
     }
 })
